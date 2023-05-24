@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Multiple-Magic-Maze-Timer/static/css/main.0c2253ff.css",
+    "main.js": "/Multiple-Magic-Maze-Timer/static/js/main.5f7b450b.js",
+    "index.html": "/Multiple-Magic-Maze-Timer/index.html",
+    "main.0c2253ff.css.map": "/Multiple-Magic-Maze-Timer/static/css/main.0c2253ff.css.map",
+    "main.5f7b450b.js.map": "/Multiple-Magic-Maze-Timer/static/js/main.5f7b450b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c2253ff.css",
+    "static/js/main.5f7b450b.js"
+  ]
+}
