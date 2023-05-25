@@ -1,5 +1,5 @@
 import { useCountDown } from "ahooks";
-import { Card } from "antd-mobile";
+import { Card, Modal } from "antd-mobile";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import dayjs from "./utils/wrapDayjs";
@@ -9,6 +9,9 @@ const StyledCard = styled(Card)<{ bgColor: string }>`
   margin: 2px 4px;
   height: 100%;
   background-color: ${(props) => props.bgColor};
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
 `;
 const StyledTime = styled.div`
   font-size: 9vh;
@@ -32,7 +35,12 @@ function TimerCard({
     leftTime: leftTime,
     onEnd: () => {
       setGameRunning(false);
-      alert("Game Over");
+      Modal.alert({
+        bodyStyle:{backgroundColor:'rgba(150,150,150,0.85)'},
+        content: 'Game Over',
+        confirmText:'OK',
+        closeOnMaskClick: true,
+      })
     },
   });
 
