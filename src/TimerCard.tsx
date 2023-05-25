@@ -36,7 +36,7 @@ function TimerCard({
     onEnd: () => {
       setGameRunning(false);
       Modal.alert({
-        bodyStyle:{backgroundColor:'rgba(150,150,150,0.85)'},
+        bodyStyle:{backgroundColor:'rgba(150,150,150,0.85)',width: '50%'},
         content: 'Game Over',
         confirmText:'OK',
         closeOnMaskClick: true,

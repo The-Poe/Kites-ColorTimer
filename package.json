@@ -1,6 +1,6 @@
 {
   "name": "six-magic-maze-timer",
-	"homepage": "https://The-Poe.github.io/KitesColorTimer",
+  "homepage": "https://The-Poe.github.io/Kites-ColorTimer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "dayjs": "^1.11.7",
     "gh-pages": "^5.0.0",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.0.0-rc.2",

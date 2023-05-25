@@ -2,9 +2,12 @@ import { SafeArea } from "antd-mobile";
 import { useState } from "react";
 import { styled } from "styled-components";
 import TimerCard from "./TimerCard";
+import { isBrowser, isMobile, browserName } from 'react-device-detect';
 
-const AppContainer = styled.div`
-  height: 88vh;
+const AppContainer = styled.div<{height:string}>`
+  height:${(props) => props.height};
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 `;
 const CardsContainer = styled.div`
   background: #7e7e7e7f;
@@ -18,9 +21,21 @@ const CardsContainer = styled.div`
 
 function App() {
   const [gameRunning, setGameRunning] = useState<boolean>(false);
+
+  let appHeight:string=''; 
+  if (isBrowser){
+    appHeight='100vh';
+  } else if (isMobile){
+    if (browserName.toLocaleLowerCase()==='mobile safari'){
+      appHeight='calc( 100vh - 75px )';
+    }else if (browserName.toLocaleLowerCase()==='chrome'){
+      appHeight='calc( 100vh - 75px )';
+    }
+  }
   return (
-    <AppContainer>
+    <AppContainer height={appHeight}>
       <SafeArea position="top" />
+      {/* {browserName} */}
       <CardsContainer>
         <TimerCard
           gameRunning={gameRunning}
