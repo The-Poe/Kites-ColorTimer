@@ -2,13 +2,13 @@ import { SafeArea } from "antd-mobile";
 import { useState } from "react";
 import { styled } from "styled-components";
 import TimerCard from "./TimerCard";
-import { isBrowser, isMobile, browserName } from 'react-device-detect';
+import  useVH  from "react-viewport-height";
 
-const AppContainer = styled.div<{height:string}>`
-  height:${(props) => props.height};
-  padding: env(safe-area-inset-top) env(safe-area-inset-right)
-    env(safe-area-inset-bottom) env(safe-area-inset-left);
-`;
+const AppContainer = styled.div`
+   height: calc(var(--vh, 1vh) * 100); 
+   padding: env(safe-area-inset-top) env(safe-area-inset-right)
+     env(safe-area-inset-bottom) env(safe-area-inset-left);
+ `;
 const CardsContainer = styled.div`
   background: #7e7e7e7f;
   display: flex;
@@ -21,21 +21,10 @@ const CardsContainer = styled.div`
 
 function App() {
   const [gameRunning, setGameRunning] = useState<boolean>(false);
-
-  let appHeight:string=''; 
-  if (isBrowser){
-    appHeight='100vh';
-  } else if (isMobile){
-    if (browserName.toLocaleLowerCase()==='mobile safari'){
-      appHeight='calc( 100vh - 75px )';
-    }else if (browserName.toLocaleLowerCase()==='chrome'){
-      appHeight='calc( 100vh - 75px )';
-    }
-  }
+  useVH(); //adjust height for all devices browser
   return (
-    <AppContainer height={appHeight}>
+    <AppContainer>
       <SafeArea position="top" />
-      {/* {browserName} */}
       <CardsContainer>
         <TimerCard
           gameRunning={gameRunning}
