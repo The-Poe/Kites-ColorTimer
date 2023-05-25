@@ -43,19 +43,19 @@ function App() {
         <TimerCard
           gameRunning={gameRunning}
           setGameRunning={setGameRunning}
-          duration={60}
+          duration={75}
           bgColor="#49c3fb"
         />
         <TimerCard
           gameRunning={gameRunning}
           setGameRunning={setGameRunning}
-          duration={75}
+          duration={90}
           bgColor="#f25af2"
         />
         <TimerCard
           gameRunning={gameRunning}
           setGameRunning={setGameRunning}
-          duration={90}
+          duration={60}
           bgColor="white"
         />
       </CardsContainer>
