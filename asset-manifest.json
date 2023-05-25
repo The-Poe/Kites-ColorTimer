@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Multiple-Magic-Maze-Timer/static/css/main.f4ab05e9.css",
-    "main.js": "/Multiple-Magic-Maze-Timer/static/js/main.a7a8ea4d.js",
-    "index.html": "/Multiple-Magic-Maze-Timer/index.html",
-    "main.f4ab05e9.css.map": "/Multiple-Magic-Maze-Timer/static/css/main.f4ab05e9.css.map",
-    "main.a7a8ea4d.js.map": "/Multiple-Magic-Maze-Timer/static/js/main.a7a8ea4d.js.map"
+    "main.css": "/KitesColorTimer/static/css/main.f4ab05e9.css",
+    "main.js": "/KitesColorTimer/static/js/main.ea65503c.js",
+    "index.html": "/KitesColorTimer/index.html",
+    "main.f4ab05e9.css.map": "/KitesColorTimer/static/css/main.f4ab05e9.css.map",
+    "main.ea65503c.js.map": "/KitesColorTimer/static/js/main.ea65503c.js.map"
   },
   "entrypoints": [
     "static/css/main.f4ab05e9.css",
-    "static/js/main.a7a8ea4d.js"
+    "static/js/main.ea65503c.js"
   ]
 }
