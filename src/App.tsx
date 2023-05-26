@@ -1,12 +1,12 @@
 import { SafeArea } from "antd-mobile";
-import { useState } from "react";
 import { styled } from "styled-components";
 import useVH from "react-viewport-height";
-import TimerButton from "./TimerButton";
+import TimerCard from "./TimerCard";
 import { useImmer } from "use-immer";
 
 const AppContainer = styled.div`
   height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 `;
@@ -35,41 +35,41 @@ function App() {
     <AppContainer>
       <SafeArea position="top" />
       <TimersContainer>
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={30}
-          bgColor="#ff3333"
+          bgColor="rgb(255,51,51)"
         />
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={45}
-          bgColor="orange"
+          bgColor="rgb(255,165,0)"
         />
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={60}
-          bgColor="#fdfd28"
+          bgColor="rgb(253,253,40)"
         />
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={75}
-          bgColor="#49c3fb"
+          bgColor="rgb(73,195,251)"
         />
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={90}
-          bgColor="#f25af2"
+          bgColor="rgb(242,90,242)"
         />
-        <TimerButton
+        <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={60}
-          bgColor="white"
+          bgColor="rgb(210,210,210)"
         />
       </TimersContainer>
       <SafeArea position="bottom" />

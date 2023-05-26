@@ -1,38 +1,56 @@
-import { Button, Modal } from "antd-mobile";
+import { Modal } from "antd-mobile";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { Updater } from "use-immer";
 import { IGameState } from "./App";
 import dayjs from "./utils/wrapDayjs";
 import { useCountdown } from 'usehooks-ts'
+import { lighten } from "polished";
 
-const StyledButton = styled(Button)<{ bgColor: string }>`
-  --background-color: ${(props) => props.bgColor};
-  --border-color: ${(props) => props.bgColor};
-  width: calc(100% - 16px);
+const StyledCard = styled.div<{ bgColor: string, progressPct: string}>`
+  cursor:pointer;
+  width: calc(100% - 24px);
   margin: 2px 4px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   border-radius: 8px;
+  &:active {
+    opacity:0.85; //for click
+  }
+  position:relative;
+  overflow: hidden;
+  background-color: ${(props) => lighten(0.3,props.bgColor) };
+  .styledCard_progressBar{
+    position:absolute;
+    z-index:2;
+    background-color: ${(props) => lighten(0.1,props.bgColor)} ;
+    width: ${(props) => props.progressPct} ;
+    height: 100%;
+    transform:scaleY(1.1);
+    transition: all 0.1s ease-in-out;
+  }
+  .styledCard_timeWrap{
+    margin: 0px 16px;
+    z-index:3;
+    font-size: 9vh;
+  }
 `;
-const StyledTime = styled.div`
-  font-size: 9vh;
-`;
-interface ITimerButton {
+
+interface ITimerCard {
   gameState: IGameState;
   setGameState: Updater<IGameState>;
   initDuration?: number;
   bgColor?: string;
 }
 
-function TimerButton({
+function TimerCard({
   gameState,
   setGameState,
   initDuration = 30,
   bgColor = "white",
-}: ITimerButton) {
+}: ITimerCard) {
   const [leftTime, setLeftTime] = useState<number>(initDuration);
   const [count, { startCountdown, stopCountdown, resetCountdown }] =
   useCountdown({
@@ -70,12 +88,14 @@ function TimerButton({
       });
     }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[count])
 
   useEffect(()=>{
     if(gameState.gameRunning===false){
       stopCountdown();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[gameState.gameRunning])
 
   useEffect(() => {
@@ -83,6 +103,7 @@ function TimerButton({
       setLeftTime(initDuration);
     }
     prevResetTimerSignal.current = gameState.resetTimerSignal;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.resetTimerSignal]);
 
   useEffect(()=>{
@@ -97,15 +118,18 @@ function TimerButton({
     if(gameState.gameRunning===true){
       startCountdown();
     } 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[leftTime,gameState.resetTimerSignal])
 
   const timeFormatted = dayjs.duration((count*1000) ?? initDuration*1000).format("mm:ss");
+  const currentProgessPct = ((count??initDuration)/initDuration)*100
 
   return (
-    <StyledButton bgColor={bgColor} onClick={onClickHandler}>
-      <StyledTime>{timeFormatted}</StyledTime>
-    </StyledButton>
+    <StyledCard bgColor={bgColor} progressPct={`${currentProgessPct}%`} onClick={onClickHandler}>
+      <div className="styledCard_progressBar" />
+      <div className="styledCard_timeWrap">{timeFormatted}</div>
+    </StyledCard>
   );
 }
 
-export default TimerButton;
+export default TimerCard;
