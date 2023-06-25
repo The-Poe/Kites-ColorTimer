@@ -6,7 +6,7 @@ import { IGameState } from "./App";
 import dayjs from "./utils/wrapDayjs";
 import { useCountdown } from 'usehooks-ts'
 import { lighten } from "polished";
-import flipSound from "./assets/sounds/flip.ogg"
+import flipSound from "./assets/sounds/flip.mp3"
 
 const StyledCard = styled.div<{ bgColor: string, progressPct: string}>`
   cursor:pointer;
@@ -53,7 +53,6 @@ function TimerCard({
   bgColor = "white",
 }: ITimerCard) {
   const [leftTime, setLeftTime] = useState<number>(initDuration);
-  const audio = new Audio(flipSound);
   const [count, { startCountdown, stopCountdown, resetCountdown }] =
   useCountdown({
     countStart: leftTime,
@@ -62,6 +61,7 @@ function TimerCard({
   const prevResetTimerSignal = useRef<boolean>();
 
   const onClickHandler = () => {
+    const audio = new Audio(flipSound);
     audio.play();
     if (count===initDuration) {
       setGameState((draft) => {
