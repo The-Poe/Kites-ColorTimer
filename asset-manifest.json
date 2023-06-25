@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/Kites-ColorTimer/static/css/main.158e2c02.css",
-    "main.js": "/Kites-ColorTimer/static/js/main.eeb93f45.js",
+    "main.js": "/Kites-ColorTimer/static/js/main.c38a65f7.js",
+    "static/media/flip.ogg": "/Kites-ColorTimer/static/media/flip.995acf9e15e816933b14.ogg",
     "index.html": "/Kites-ColorTimer/index.html",
     "main.158e2c02.css.map": "/Kites-ColorTimer/static/css/main.158e2c02.css.map",
-    "main.eeb93f45.js.map": "/Kites-ColorTimer/static/js/main.eeb93f45.js.map"
+    "main.c38a65f7.js.map": "/Kites-ColorTimer/static/js/main.c38a65f7.js.map"
   },
   "entrypoints": [
     "static/css/main.158e2c02.css",
-    "static/js/main.eeb93f45.js"
+    "static/js/main.c38a65f7.js"
   ]
 }
