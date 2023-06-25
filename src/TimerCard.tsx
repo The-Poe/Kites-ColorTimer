@@ -29,7 +29,7 @@ const StyledCard = styled.div<{ bgColor: string; progressPct: string }>`
     height: 100%;
     opacity: 0;
     transition: all 0.5s;
-    box-shadow: 0 0 3px 12px white;
+    box-shadow: 0 0 3px 20px white;
   }
   &:active:after {
     box-shadow: 0 0 0 0 white;
