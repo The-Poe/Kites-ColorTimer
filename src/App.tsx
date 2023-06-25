@@ -39,19 +39,19 @@ function App() {
           gameState={gameState}
           setGameState={setGameState}
           initDuration={30}
-          bgColor="rgb(255,51,51)"
+          bgColor="#ff0000"
         />
         <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={45}
-          bgColor="rgb(255,165,0)"
+          bgColor="#ff8c00"
         />
         <TimerCard
           gameState={gameState}
           setGameState={setGameState}
           initDuration={60}
-          bgColor="rgb(253,253,40)"
+          bgColor="#fbfb00"
         />
         <TimerCard
           gameState={gameState}
