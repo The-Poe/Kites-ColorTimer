@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import useVH from "react-viewport-height";
 import TimerCard from "./TimerCard";
 import { useImmer } from "use-immer";
+import { useEffect } from "react";
+import BGMBase64 from "./sounds/BGMBase64";
 
 const AppContainer = styled.div`
   height: calc(var(--vh, 1vh) * 100);
@@ -24,6 +26,8 @@ export interface IGameState {
   gameRunning: boolean;
   resetTimerSignal: boolean;
 }
+const audioBGM = new Audio(BGMBase64);
+audioBGM.loop=true;
 
 function App() {
   const [gameState, setGameState] = useImmer<IGameState>({
@@ -31,6 +35,16 @@ function App() {
     resetTimerSignal: false,
   });
   useVH(); //adjust height for all devices browser
+
+  useEffect(()=>{
+    console.log("gameState.gameRunning:",gameState.gameRunning)
+    if (gameState.gameRunning){
+      audioBGM.play();
+    } else  if (gameState.gameRunning === false){
+      audioBGM.pause();
+      audioBGM.currentTime = 0;
+    }
+  },[gameState.gameRunning])
   return (
     <AppContainer>
       <SafeArea position="top" />
