@@ -7,6 +7,7 @@ import dayjs from "./utils/wrapDayjs";
 import { useCountdown } from "usehooks-ts";
 import { lighten } from "polished";
 import flipAudioBase64 from "./sounds/flipAudioBase64";
+import finalWistleBase64 from "./sounds/finalWhistleBase64";
 
 const StyledCard = styled.div<{ $bgColor: string; $progressPct: string }>`
   cursor: pointer;
@@ -61,7 +62,7 @@ const StyledCard = styled.div<{ $bgColor: string; $progressPct: string }>`
     font-size: 9vh;
   }
 `;
-
+const audioFinalWistle = new Audio(finalWistleBase64);
 interface ITimerCard {
   gameState: IGameState;
   setGameState: Updater<IGameState>;
@@ -101,6 +102,7 @@ function TimerCard({
       setGameState((draft) => {
         draft.gameRunning = false;
       });
+      audioFinalWistle.play();
       Modal.alert({
         bodyStyle: { backgroundColor: "rgba(150,150,150,0.85)", width: "50%" },
         content: "Game Over",
