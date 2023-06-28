@@ -3,8 +3,9 @@ import { styled } from "styled-components";
 import useVH from "react-viewport-height";
 import TimerCard from "./TimerCard";
 import { useImmer } from "use-immer";
-import { useEffect } from "react";
-import BGMBase64 from "./sounds/BGMBase64";
+import { useEffect, useState } from "react";
+import BGM1Base64 from "./sounds/BGM1Base64";
+import BGM2Base64 from "./sounds/BGM2Base64";
 
 const AppContainer = styled.div`
   height: calc(var(--vh, 1vh) * 100);
@@ -26,8 +27,10 @@ export interface IGameState {
   gameRunning: boolean;
   resetTimerSignal: boolean;
 }
-const audioBGM = new Audio(BGMBase64);
-audioBGM.loop=true;
+const audioBGM2 = new Audio(BGM2Base64);
+audioBGM2.loop=true;
+const audioBGM1 = new Audio(BGM1Base64);
+audioBGM1.loop=true;
 
 function App() {
   const [gameState, setGameState] = useImmer<IGameState>({
@@ -35,14 +38,15 @@ function App() {
     resetTimerSignal: false,
   });
   useVH(); //adjust height for all devices browser
+  const [audioBGM,setAudioBGM] =useState(Math.random()>0.5 ?audioBGM1:audioBGM2)
 
   useEffect(()=>{
-    console.log("gameState.gameRunning:",gameState.gameRunning)
     if (gameState.gameRunning){
       audioBGM.play();
     } else  if (gameState.gameRunning === false){
       audioBGM.pause();
       audioBGM.currentTime = 0;
+      setAudioBGM(audioBGM===audioBGM1?audioBGM2:audioBGM1)
     }
   },[gameState.gameRunning])
   return (
@@ -65,7 +69,7 @@ function App() {
           gameState={gameState}
           setGameState={setGameState}
           initDuration={60}
-          bgColor="#fbfb00"
+          bgColor="#c0c000"
         />
         <TimerCard
           gameState={gameState}

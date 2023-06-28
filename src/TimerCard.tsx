@@ -8,7 +8,7 @@ import { useCountdown } from "usehooks-ts";
 import { lighten } from "polished";
 import flipAudioBase64 from "./sounds/flipAudioBase64";
 
-const StyledCard = styled.div<{ bgColor: string; progressPct: string }>`
+const StyledCard = styled.div<{ $bgColor: string; $progressPct: string }>`
   cursor: pointer;
   width: calc(100% - 24px);
   margin: 2px 4px;
@@ -44,13 +44,13 @@ const StyledCard = styled.div<{ bgColor: string; progressPct: string }>`
   }
   position: relative;
   /* overflow: hidden; */
-  background-color: ${(props) => lighten(0.3, props.bgColor)};
+  background-color: ${(props) => lighten(0.35, props.$bgColor)};
   .styledCard_progressBar {
     border-radius: 8px;
     position: absolute;
     z-index: 2;
-    background-color: ${(props) => lighten(0.1, props.bgColor)};
-    width: ${(props) => props.progressPct};
+    background-color: ${(props) => lighten(0.1, props.$bgColor)};
+    width: ${(props) => props.$progressPct};
     height: 100%;
     /* transform: scaleY(1.1); */
     transition: all 0.1s ease-in-out;
@@ -154,8 +154,8 @@ function TimerCard({
 
   return (
     <StyledCard
-      bgColor={bgColor}
-      progressPct={`${currentProgessPct}%`}
+      $bgColor={bgColor}
+      $progressPct={`${currentProgessPct}%`}
       onClick={onClickHandler}
     >
       <div className="styledCard_progressBar" />
