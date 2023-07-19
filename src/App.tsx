@@ -4,8 +4,6 @@ import useVH from "react-viewport-height";
 import TimerCard from "./TimerCard";
 import { useImmer } from "use-immer";
 import { useEffect, useState } from "react";
-import BGM1Base64 from "./sounds/BGM1Base64";
-import BGM2Base64 from "./sounds/BGM2Base64";
 
 const AppContainer = styled.div`
   height: calc(var(--vh, 1vh) * 100);
@@ -27,9 +25,9 @@ export interface IGameState {
   gameRunning: boolean;
   resetTimerSignal: boolean;
 }
-const audioBGM2 = new Audio(BGM2Base64);
+const audioBGM2 = new Audio('https://webassetbucket.s3.ap-southeast-1.amazonaws.com/My+Dog+Is+Happy+-+Reed+Mathis.mp3');
 audioBGM2.loop=true;
-const audioBGM1 = new Audio(BGM1Base64);
+const audioBGM1 = new Audio('https://webassetbucket.s3.ap-southeast-1.amazonaws.com/BGMmp3.mp3');
 audioBGM1.loop=true;
 
 function App() {
